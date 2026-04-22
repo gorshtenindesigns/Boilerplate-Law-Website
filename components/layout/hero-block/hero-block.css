@@ -1,0 +1,76 @@
+/* Hero Block Styles */
+
+.hero-block {
+    width: 100%;
+    padding: clamp(4rem, 10vw, 8rem) var(--boilerplate-page-gutter);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.hero-block__inner {
+    max-width: var(--boilerplate-page-width);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 4vw, 2rem);
+}
+
+.hero-block__eyebrow {
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+    animation: fadeInUp 0.8s ease-out 0.1s both;
+}
+
+.hero-block__title {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+    letter-spacing: -0.02em;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.hero-block__excerpt {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.6;
+    max-width: 60ch;
+    opacity: 0.9;
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.hero-block__excerpt p {
+    margin: 0;
+}
+
+.hero-block__excerpt p + p {
+    margin-top: 1rem;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(2rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-block {
+        padding: clamp(2.5rem, 7vw, 4rem) var(--boilerplate-page-gutter);
+    }
+
+    .hero-block__title {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+    }
+
+    .hero-block__excerpt {
+        font-size: 1rem;
+    }
+}
