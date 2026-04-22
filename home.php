@@ -48,7 +48,31 @@ if (is_home() && !is_front_page()) :
                         </article>
                     <?php endwhile; ?>
                 <?php else : ?>
-                    <p><?php echo esc_html(boilerplate_get_default_copy('empty_results', 'No posts found.')); ?></p>
+                    <?php
+                    $placeholder_posts = [
+                        [
+                            'title' => 'Preparing for Your First Legal Consultation',
+                            'excerpt' => 'A practical overview of what to gather, what to ask, and how to make the first meeting more productive.',
+                        ],
+                        [
+                            'title' => 'How Client Communication Shapes Better Case Strategy',
+                            'excerpt' => 'Clear updates, organized timelines, and transparent expectations help clients make confident decisions.',
+                        ],
+                        [
+                            'title' => 'Understanding Practice Areas Before Choosing Counsel',
+                            'excerpt' => 'Different legal matters call for different experience. This guide explains how practice area focus supports stronger representation.',
+                        ],
+                    ];
+                    ?>
+                    <?php foreach ($placeholder_posts as $placeholder_post) : ?>
+                        <article class="post-list__item post-list__item--placeholder">
+                            <div class="post-list__content">
+                                <span class="post-list__meta">Coming Soon</span>
+                                <h2><?php echo esc_html($placeholder_post['title']); ?></h2>
+                                <p><?php echo esc_html($placeholder_post['excerpt']); ?></p>
+                            </div>
+                        </article>
+                    <?php endforeach; ?>
                 <?php endif; ?>
             </div>
 

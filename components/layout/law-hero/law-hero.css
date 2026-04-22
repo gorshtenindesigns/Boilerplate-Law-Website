@@ -3,8 +3,8 @@
 .law-hero {
     position: relative;
     width: 100%;
-    padding: clamp(11rem, 16vw, 14rem) var(--boilerplate-page-gutter) clamp(4rem, 8vw, 7rem);
-    min-height: 100svh;
+    padding: clamp(9rem, 13vw, 11rem) var(--boilerplate-page-gutter) clamp(3rem, 5vw, 4.5rem);
+    min-height: auto;
     background-color: #34485f;
     background-size: cover;
     background-position: center;
@@ -45,7 +45,7 @@
     }
 
     .law-hero {
-        min-height: 100svh;
+        min-height: auto;
     }
 }
 
@@ -305,7 +305,9 @@
 /* Mobile optimization */
 @media (max-width: 640px) {
     .law-hero {
-        min-height: 24rem;
+        padding-top: clamp(8rem, 24vw, 10rem);
+        padding-bottom: 3rem;
+        min-height: auto;
     }
 
     .law-hero__inner {

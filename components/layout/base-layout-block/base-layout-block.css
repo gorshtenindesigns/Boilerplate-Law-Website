@@ -126,8 +126,8 @@
 .base-layout-block--index,
 .base-layout-block--single {
   margin-top: 0;
-  padding: clamp(11rem, 16vw, 14rem) 0 clamp(4rem, 8vw, 7rem);
-  min-height: 100svh;
+  padding: clamp(9rem, 13vw, 11rem) 0 clamp(3rem, 5vw, 4.5rem);
+  min-height: auto;
   background: linear-gradient(135deg, #06243a 0%, #0f3b5a 100%);
   color: #ffffff;
 }
