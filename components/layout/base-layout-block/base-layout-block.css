@@ -1,0 +1,96 @@
+.base-layout-block {
+  padding: var(--boilerplate-section-space) 0;
+}
+
+.base-layout-block__inner {
+  width: min(var(--boilerplate-page-width), calc(100% - (var(--boilerplate-page-gutter) * 2)));
+  margin: 0 auto;
+  display: grid;
+  gap: 1.5rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border: 1px solid var(--boilerplate-color-border);
+  border-radius: var(--boilerplate-radius);
+  background: var(--boilerplate-color-surface);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+}
+
+.base-layout-block__eyebrow {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--boilerplate-color-text-muted);
+}
+
+.base-layout-block__title {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.05;
+}
+
+.base-layout-block__body {
+  margin-top: 1rem;
+  color: var(--boilerplate-color-text-muted);
+}
+
+.base-layout-block__body > * + * {
+  margin-top: 1rem;
+}
+
+.base-layout-block__meta-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+}
+
+.base-layout-block__meta-item {
+  padding: 1rem;
+  border-radius: calc(var(--boilerplate-radius) * 0.75);
+  background: var(--boilerplate-color-surface-alt);
+}
+
+.base-layout-block__meta-value {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.base-layout-block__meta-label {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--boilerplate-color-text-muted);
+}
+
+.base-layout-block__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.base-layout-block__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--boilerplate-color-border);
+  background: var(--boilerplate-color-surface);
+  color: var(--boilerplate-color-text);
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.base-layout-block__action:hover,
+.base-layout-block__action:focus-visible {
+  background: var(--boilerplate-color-accent-soft);
+  border-color: var(--boilerplate-color-accent);
+  color: var(--boilerplate-color-accent);
+}
+
+@media (min-width: 860px) {
+  .base-layout-block__inner {
+    grid-template-columns: minmax(0, 2fr) minmax(16rem, 1fr);
+    align-items: start;
+  }
+}

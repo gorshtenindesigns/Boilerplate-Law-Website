@@ -1,0 +1,17 @@
+.base-ui-component {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--boilerplate-color-border);
+  background: var(--boilerplate-color-surface);
+  color: var(--boilerplate-color-text);
+}
+
+.base-ui-component--accent {
+  background: var(--boilerplate-color-accent);
+  border-color: var(--boilerplate-color-accent);
+  color: #ffffff;
+}

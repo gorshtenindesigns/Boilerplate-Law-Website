@@ -1,0 +1,52 @@
+/*
+Theme Name: Boilerplate Update
+Author: LLG-Neboch
+Description: Neutral classic-editor boilerplate theme.
+Version: 2.0
+*/
+
+html {
+  font-size: 16px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--boilerplate-font-sans);
+  color: var(--boilerplate-color-text);
+  background: linear-gradient(
+    180deg,
+    var(--boilerplate-color-background) 0%,
+    #eef3fb 100%
+  );
+}
+
+img,
+picture,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--boilerplate-color-accent);
+  outline-offset: 2px;
+}
