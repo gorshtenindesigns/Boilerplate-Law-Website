@@ -1,5 +1,6 @@
 <?php
 get_header();
+$media_defaults = function_exists('boilerplate_get_theme_media_defaults') ? boilerplate_get_theme_media_defaults() : [];
 ?>
 
 <main class="search-shell" id="content">
@@ -9,6 +10,8 @@ get_header();
         'eyebrow' => boilerplate_get_default_copy('content_eyebrow'),
         'title' => boilerplate_get_default_copy('search_title'),
         'body' => wpautop(boilerplate_get_default_copy('page_summary')),
+        'media_image' => $media_defaults['wide_primary'] ?? '',
+        'media_alt' => boilerplate_get_default_copy('search_title'),
     ]);
     ?>
 

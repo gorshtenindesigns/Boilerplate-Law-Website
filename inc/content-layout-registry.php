@@ -233,7 +233,7 @@ function boilerplate_call_registered_content_layout($layout, $section, $index, $
         return false;
     }
 
-    call_user_func($callback, $section);
+    call_user_func($callback, $section, $index, $is_last, $args);
     return true;
 }
 

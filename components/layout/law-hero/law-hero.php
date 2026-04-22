@@ -24,6 +24,9 @@ $secondary_cta_url = trim((string)($args['secondary_cta_url'] ?? ''));
 $stats = is_array($args['stats'] ?? null) ? array_values($args['stats']) : [];
 $background_image = trim((string)($args['background_image'] ?? ''));
 $featured_image = trim((string)($args['featured_image'] ?? ''));
+$lead_form_title = trim((string)($args['lead_form_title'] ?? 'Start Your Consultation'));
+$lead_form_body = trim((string)($args['lead_form_body'] ?? 'Tell us how to reach you and we will follow up with the next step.'));
+$lead_form_action = trim((string)($args['lead_form_action'] ?? $primary_cta_url));
 ?>
 
 <section class="law-hero" <?php if ($background_image) : ?>style="background-image: url('<?php echo esc_url($background_image); ?>');"<?php endif; ?> data-law-hero-ready="true">
@@ -61,28 +64,66 @@ $featured_image = trim((string)($args['featured_image'] ?? ''));
             <?php endif; ?>
         </div>
 
-        <?php if (!empty($stats)) : ?>
-            <div class="law-hero__stats">
-                <?php foreach ($stats as $stat) :
-                    $stat_value = trim((string)($stat['value'] ?? ''));
-                    $stat_label = trim((string)($stat['label'] ?? ''));
+        <?php if ($lead_form_action !== '' || !empty($stats)) : ?>
+            <aside class="law-hero__side" aria-label="Consultation request">
+                <?php if ($lead_form_action !== '') : ?>
+                    <form class="law-hero__lead-form" action="<?php echo esc_url($lead_form_action); ?>" method="post">
+                        <div class="law-hero__lead-header">
+                            <?php if ($lead_form_title !== '') : ?>
+                                <h2 class="law-hero__lead-title"><?php echo esc_html($lead_form_title); ?></h2>
+                            <?php endif; ?>
+                            <?php if ($lead_form_body !== '') : ?>
+                                <p class="law-hero__lead-body"><?php echo esc_html($lead_form_body); ?></p>
+                            <?php endif; ?>
+                        </div>
 
-                    if ($stat_value === '' && $stat_label === '') {
-                        continue;
-                    }
-                    ?>
-                    <div class="law-hero__stat-item">
-                        <?php if ($stat_value !== '') : ?>
-                            <span class="law-hero__stat-value" data-count="<?php echo esc_attr($stat_value); ?>">
-                                <?php echo esc_html($stat_value); ?>
-                            </span>
-                        <?php endif; ?>
-                        <?php if ($stat_label !== '') : ?>
-                            <span class="law-hero__stat-label"><?php echo esc_html($stat_label); ?></span>
-                        <?php endif; ?>
+                        <div class="law-hero__lead-fields">
+                            <label class="law-hero__field">
+                                <span>Name</span>
+                                <input type="text" name="lead_name" autocomplete="name">
+                            </label>
+                            <label class="law-hero__field">
+                                <span>Phone</span>
+                                <input type="tel" name="lead_phone" autocomplete="tel">
+                            </label>
+                            <label class="law-hero__field law-hero__field--wide">
+                                <span>Email</span>
+                                <input type="email" name="lead_email" autocomplete="email">
+                            </label>
+                            <label class="law-hero__field law-hero__field--wide">
+                                <span>How can we help?</span>
+                                <textarea name="lead_message" rows="3"></textarea>
+                            </label>
+                        </div>
+
+                        <button class="law-hero__submit" type="submit">Request Consultation</button>
+                    </form>
+                <?php endif; ?>
+
+                <?php if (!empty($stats)) : ?>
+                    <div class="law-hero__stats">
+                        <?php foreach ($stats as $stat) :
+                            $stat_value = trim((string)($stat['value'] ?? ''));
+                            $stat_label = trim((string)($stat['label'] ?? ''));
+
+                            if ($stat_value === '' && $stat_label === '') {
+                                continue;
+                            }
+                            ?>
+                            <div class="law-hero__stat-item">
+                                <?php if ($stat_value !== '') : ?>
+                                    <span class="law-hero__stat-value" data-count="<?php echo esc_attr($stat_value); ?>">
+                                        <?php echo esc_html($stat_value); ?>
+                                    </span>
+                                <?php endif; ?>
+                                <?php if ($stat_label !== '') : ?>
+                                    <span class="law-hero__stat-label"><?php echo esc_html($stat_label); ?></span>
+                                <?php endif; ?>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
-                <?php endforeach; ?>
-            </div>
+                <?php endif; ?>
+            </aside>
         <?php endif; ?>
 
         <?php if ($featured_image !== '') : ?>

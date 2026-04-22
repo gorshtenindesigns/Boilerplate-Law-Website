@@ -8,6 +8,7 @@ require_once get_template_directory() . '/inc/header-navigation.php';
 require_once get_template_directory() . '/inc/content-layout-registry.php';
 require_once get_template_directory() . '/inc/content-page-parser.php';
 require_once get_template_directory() . '/inc/create-test-content.php';
+require_once get_template_directory() . '/inc/homepage-sections.php';
 
 add_action('after_setup_theme', function () {
     add_theme_support('post-thumbnails');
@@ -40,6 +41,40 @@ add_action('wp_enqueue_scripts', function () {
         true
     );
 }, 20);
+
+add_action('wp_enqueue_scripts', function () {
+    $theme_uri = get_template_directory_uri();
+
+    foreach ([
+        'base-ui-component' => 'components/ui/base-ui-component/base-ui-component',
+        'law-hero' => 'components/layout/law-hero/law-hero',
+        'practice-area-grid' => 'components/layout/practice-area-grid/practice-area-grid',
+        'base-layout-block' => 'components/layout/base-layout-block/base-layout-block',
+        'base-content-block' => 'components/content-blocks/base-content-block/base-content-block',
+    ] as $handle => $asset_base) {
+        $css_path = $asset_base . '.css';
+        $js_path = $asset_base . '.js';
+
+        if (file_exists(get_theme_file_path($css_path))) {
+            wp_enqueue_style(
+                $handle . '-css',
+                $theme_uri . '/' . $css_path,
+                ['boilerplate-global'],
+                boilerplate_get_asset_version($css_path)
+            );
+        }
+
+        if (file_exists(get_theme_file_path($js_path))) {
+            wp_enqueue_script(
+                $handle . '-js',
+                $theme_uri . '/' . $js_path,
+                ['boilerplate-index'],
+                boilerplate_get_asset_version($js_path),
+                true
+            );
+        }
+    }
+}, 30);
 
 add_action('init', function () {
     if (is_admin()) {

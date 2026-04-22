@@ -13,6 +13,7 @@ $parsed_content = boilerplate_render_structured_content($content, [
     'post_id' => get_the_ID(),
 ]);
 $hero_data = boilerplate_get_parsed_hero_data(get_the_title(), '');
+$media_defaults = function_exists('boilerplate_get_theme_media_defaults') ? boilerplate_get_theme_media_defaults() : [];
 ?>
 
 <main class="template-shell template-shell--parent" id="content">
@@ -22,6 +23,8 @@ $hero_data = boilerplate_get_parsed_hero_data(get_the_title(), '');
         'eyebrow' => boilerplate_get_default_copy('content_eyebrow'),
         'title' => $hero_data['h1'] ?? get_the_title(),
         'body' => $hero_data['excerpt'] !== '' ? $hero_data['excerpt'] : wpautop(boilerplate_get_default_copy('page_summary')),
+        'media_image' => has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : ($media_defaults['wide_secondary'] ?? ''),
+        'media_alt' => $hero_data['h1'] ?? get_the_title(),
     ]);
     ?>
 

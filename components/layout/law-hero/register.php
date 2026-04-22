@@ -50,6 +50,8 @@ function law_hero_build_args($post_id = 0, $context = [], $block = [])
         $featured_image = get_the_post_thumbnail_url($post_id, 'large');
     }
 
+    $media_defaults = function_exists('boilerplate_get_theme_media_defaults') ? boilerplate_get_theme_media_defaults() : [];
+
     return [
         'eyebrow' => get_post_meta($post_id, 'law_hero_eyebrow', true) ?: boilerplate_get_default_copy('home_eyebrow', 'Client-Centered Legal Practice'),
         'title' => $hero_data['h1'] ?? boilerplate_get_default_copy('home_title', get_the_title($post_id)),
@@ -59,8 +61,11 @@ function law_hero_build_args($post_id = 0, $context = [], $block = [])
         'secondary_cta_label' => get_post_meta($post_id, 'law_hero_secondary_cta_label', true) ?: 'View Practice Areas',
         'secondary_cta_url' => get_post_meta($post_id, 'law_hero_secondary_cta_url', true) ?: home_url('/practice-areas/'),
         'stats' => $stats,
-        'background_image' => get_post_meta($post_id, 'law_hero_background_image', true) ?: '',
+        'background_image' => get_post_meta($post_id, 'law_hero_background_image', true) ?: ($media_defaults['hero'] ?? ''),
         'featured_image' => $featured_image,
+        'lead_form_title' => get_post_meta($post_id, 'law_hero_lead_form_title', true) ?: 'Start Your Consultation',
+        'lead_form_body' => get_post_meta($post_id, 'law_hero_lead_form_body', true) ?: 'Tell us how to reach you and we will follow up with the next step.',
+        'lead_form_action' => get_post_meta($post_id, 'law_hero_lead_form_action', true) ?: $contact_url,
     ];
 }
 
@@ -119,6 +124,27 @@ function boilerplate_register_law_hero_block()
                     'type' => 'url',
                     'placeholder' => 'https://example.com/background.jpg',
                     'description' => 'Full URL to a background image for the hero section',
+                ],
+                [
+                    'id' => 'law_hero_lead_form_title',
+                    'label' => 'Lead Form Title',
+                    'type' => 'text',
+                    'placeholder' => 'Start Your Consultation',
+                    'description' => 'Heading above the hero lead intake form',
+                ],
+                [
+                    'id' => 'law_hero_lead_form_body',
+                    'label' => 'Lead Form Body',
+                    'type' => 'textarea',
+                    'placeholder' => 'Tell us how to reach you and we will follow up with the next step.',
+                    'description' => 'Short helper text above the hero lead intake fields',
+                ],
+                [
+                    'id' => 'law_hero_lead_form_action',
+                    'label' => 'Lead Form Action URL',
+                    'type' => 'url',
+                    'placeholder' => '/contact/',
+                    'description' => 'Where the hero form submits. Defaults to the contact page.',
                 ],
                 [
                     'id' => 'law_hero_stat_1_value',

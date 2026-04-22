@@ -20,6 +20,8 @@ $title = trim((string)($args['title'] ?? ''));
 $body = (string)($args['body'] ?? '');
 $items = is_array($args['items'] ?? null) ? array_values($args['items']) : [];
 $links = is_array($args['links'] ?? null) ? array_values($args['links']) : [];
+$media_image = trim((string)($args['media_image'] ?? ''));
+$media_alt = trim((string)($args['media_alt'] ?? $title));
 ?>
 
 <section class="base-layout-block base-layout-block--<?php echo esc_attr($variant); ?>">
@@ -39,6 +41,12 @@ $links = is_array($args['links'] ?? null) ? array_values($args['links']) : [];
                 </div>
             <?php endif; ?>
         </div>
+
+        <?php if ($media_image !== '') : ?>
+            <figure class="base-layout-block__media">
+                <img src="<?php echo esc_url($media_image); ?>" alt="<?php echo esc_attr($media_alt); ?>" loading="lazy">
+            </figure>
+        <?php endif; ?>
 
         <?php if (!empty($items) || !empty($links)) : ?>
             <div class="base-layout-block__aside">

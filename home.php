@@ -19,7 +19,7 @@ $homepage_context = [
 $homepage_blocks = boilerplate_get_active_homepage_blocks();
 ?>
 
-<main class="site-main" id="content">
+<main class="site-main site-main--home" id="content">
     <?php foreach ($homepage_blocks as $block_slug => $block_config) : ?>
         <?php
         $block_args = boilerplate_get_homepage_block_render_args($block_slug, get_the_ID(), $homepage_context);
@@ -33,6 +33,16 @@ $homepage_blocks = boilerplate_get_active_homepage_blocks();
             <?php echo $parsed_content; ?>
         </section>
     <?php endif; ?>
+
+    <?php
+    if (function_exists('boilerplate_render_homepage_testimonials')) {
+        boilerplate_render_homepage_testimonials();
+    }
+
+    if (function_exists('boilerplate_render_homepage_faq')) {
+        boilerplate_render_homepage_faq();
+    }
+    ?>
 </main>
 
 <?php get_footer(); ?>

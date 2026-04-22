@@ -69,6 +69,33 @@ function boilerplate_get_asset_version($relative_path)
     return $theme ? $theme->get('Version') : null;
 }
 
+function boilerplate_get_theme_media_url($filename)
+{
+    $safe_filename = ltrim((string) $filename, '/');
+
+    if ($safe_filename === '') {
+        return '';
+    }
+
+    $relative_path = 'assets/media/' . basename($safe_filename);
+
+    if (!file_exists(get_theme_file_path($relative_path))) {
+        return '';
+    }
+
+    return get_theme_file_uri($relative_path);
+}
+
+function boilerplate_get_theme_media_defaults()
+{
+    return [
+        'hero' => boilerplate_get_theme_media_url('1.png'),
+        'wide_primary' => boilerplate_get_theme_media_url('2.png'),
+        'wide_secondary' => boilerplate_get_theme_media_url('3.png'),
+        'square' => boilerplate_get_theme_media_url('Placeholder.png'),
+    ];
+}
+
 function boilerplate_get_homepage_block_registry()
 {
     if (!isset($GLOBALS['boilerplate_homepage_block_registry']) || !is_array($GLOBALS['boilerplate_homepage_block_registry'])) {

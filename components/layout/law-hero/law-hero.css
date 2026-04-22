@@ -3,11 +3,12 @@
 .law-hero {
     position: relative;
     width: 100%;
-    padding: var(--boilerplate-section-space) var(--boilerplate-page-gutter);
+    padding: clamp(4rem, 8vw, 7rem) var(--boilerplate-page-gutter);
     min-height: 28rem;
+    background-color: #34485f;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     overflow: hidden;
 }
 
@@ -19,9 +20,9 @@
     bottom: 0;
     background: linear-gradient(
         135deg,
-        rgba(26, 58, 92, 0.85) 0%,
-        rgba(26, 58, 92, 0.75) 50%,
-        rgba(23, 32, 51, 0.9) 100%
+        rgba(18, 39, 61, 0.84) 0%,
+        rgba(37, 72, 104, 0.72) 48%,
+        rgba(18, 27, 42, 0.88) 100%
     );
     z-index: 1;
 }
@@ -29,7 +30,8 @@
 .law-hero__inner {
     position: relative;
     z-index: 2;
-    max-width: var(--boilerplate-page-width);
+    width: min(92rem, 100%);
+    max-width: none;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
@@ -39,7 +41,7 @@
 
 @media (min-width: 1024px) {
     .law-hero__inner {
-        grid-template-columns: 1.2fr 1fr;
+        grid-template-columns: minmax(0, 0.95fr) minmax(27rem, 0.75fr);
     }
 
     .law-hero {
@@ -52,6 +54,90 @@
     flex-direction: column;
     gap: clamp(1rem, 3vw, 2rem);
     animation: lawHeroFadeUp 0.6s ease-out 0s both;
+}
+
+.law-hero__side {
+    display: grid;
+    gap: 1rem;
+    align-self: center;
+    animation: lawHeroFadeUp 0.6s ease-out 0.25s both;
+}
+
+.law-hero__lead-form {
+    display: grid;
+    gap: 1rem;
+    padding: clamp(1rem, 2vw, 1.35rem);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(10, 27, 45, 0.66);
+    backdrop-filter: blur(14px);
+}
+
+.law-hero__lead-header {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.law-hero__lead-title {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(1.2rem, 2vw, 1.55rem);
+    line-height: 1.15;
+}
+
+.law-hero__lead-body {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.law-hero__lead-fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.law-hero__field {
+    display: grid;
+    gap: 0.35rem;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.law-hero__field--wide {
+    grid-column: 1 / -1;
+}
+
+.law-hero__field input,
+.law-hero__field textarea {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.42);
+    border-radius: 0;
+    background: transparent;
+    color: #ffffff;
+    min-height: 2.25rem;
+    padding: 0.25rem 0;
+    resize: vertical;
+}
+
+.law-hero__field input:focus,
+.law-hero__field textarea:focus {
+    outline: 0;
+    border-color: #ffffff;
+}
+
+.law-hero__submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    border: 0;
+    background: #ffffff;
+    color: #0a2238;
+    font-weight: 800;
+    cursor: pointer;
 }
 
 .law-hero__eyebrow {
@@ -134,21 +220,15 @@
 .law-hero__stats {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: clamp(1rem, 2vw, 1.5rem);
-    animation: lawHeroFadeUp 0.6s ease-out 0.5s both;
-}
-
-@media (min-width: 768px) {
-    .law-hero__stats {
-        grid-template-columns: repeat(4, 1fr);
-    }
+    gap: 0.85rem;
 }
 
 .law-hero__stat-item {
-    padding: clamp(1rem, 2vw, 1.5rem);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: calc(var(--boilerplate-radius) * 0.6);
-    background: rgba(255, 255, 255, 0.05);
+    min-height: 7.5rem;
+    padding: clamp(0.95rem, 2vw, 1.2rem);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(10px);
     display: flex;
     flex-direction: column;
@@ -157,7 +237,7 @@
 
 .law-hero__stat-value {
     display: block;
-    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-size: clamp(1.75rem, 3vw, 2.4rem);
     font-weight: 700;
     line-height: 1;
     color: var(--boilerplate-color-accent-soft);
@@ -212,6 +292,7 @@
     .law-hero__title,
     .law-hero__excerpt,
     .law-hero__actions,
+    .law-hero__side,
     .law-hero__stats {
         animation: none;
     }
@@ -233,6 +314,10 @@
 
     .law-hero__stats {
         gap: 0.75rem;
+    }
+
+    .law-hero__lead-fields {
+        grid-template-columns: 1fr;
     }
 
     .law-hero__stat-item {

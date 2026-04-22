@@ -1,5 +1,6 @@
 <?php
 get_header();
+$media_defaults = function_exists('boilerplate_get_theme_media_defaults') ? boilerplate_get_theme_media_defaults() : [];
 ?>
 
 <main class="archive-shell" id="content">
@@ -9,6 +10,8 @@ get_header();
         'eyebrow' => boilerplate_get_default_copy('content_eyebrow'),
         'title' => get_the_archive_title() ?: boilerplate_get_default_copy('archive_title'),
         'body' => get_the_archive_description() !== '' ? get_the_archive_description() : wpautop(boilerplate_get_default_copy('page_summary')),
+        'media_image' => $media_defaults['wide_secondary'] ?? '',
+        'media_alt' => get_the_archive_title() ?: boilerplate_get_default_copy('archive_title'),
     ]);
     ?>
 
