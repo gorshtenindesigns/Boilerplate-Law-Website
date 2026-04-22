@@ -40,15 +40,8 @@ $service_areas = [
     'Brentwood',
     'Century City',
     'Encino',
-    'Sherman Oaks',
-    'Studio City',
-    'North Hollywood',
-    'Torrance',
-    'Inglewood',
-    'Manhattan Beach',
-    'Redondo Beach',
-    'Marina del Rey',
 ];
+$service_area_columns = array_chunk($service_areas, 5);
 ?>
     <section class="site-service-map" aria-labelledby="site-service-map-title">
         <div class="site-service-map__inner">
@@ -67,9 +60,14 @@ $service_areas = [
                     <div class="site-service-map__pin"><strong>Long Beach</strong><span>South Bay access</span></div>
                 </div>
 
-                <div class="site-service-map__areas">
-                    <?php foreach ($service_areas as $service_area) : ?>
-                        <span class="site-service-map__area"><?php echo esc_html($service_area); ?></span>
+                <div class="site-service-map__areas" aria-label="Service area city list">
+                    <?php foreach ($service_area_columns as $column_index => $service_area_column) : ?>
+                        <div class="site-service-map__area-column">
+                            <span class="site-service-map__area-column-title">Area <?php echo esc_html((string)($column_index + 1)); ?></span>
+                            <?php foreach ($service_area_column as $service_area) : ?>
+                                <span class="site-service-map__area"><?php echo esc_html($service_area); ?></span>
+                            <?php endforeach; ?>
+                        </div>
                     <?php endforeach; ?>
                 </div>
             </div>
