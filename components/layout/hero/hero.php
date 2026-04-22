@@ -1,16 +1,16 @@
 <?php
 wp_enqueue_style(
-    'hero-block-css',
-    get_template_directory_uri() . '/components/layout/hero-block/hero-block.css',
+    'hero-css',
+    get_template_directory_uri() . '/components/layout/hero/hero.css',
     array(),
-    boilerplate_get_asset_version('components/layout/hero-block/hero-block.css')
+    boilerplate_get_asset_version('components/layout/hero/hero.css')
 );
 
 wp_enqueue_script(
-    'hero-block-js',
-    get_template_directory_uri() . '/components/layout/hero-block/hero-block.js',
+    'hero-js',
+    get_template_directory_uri() . '/components/layout/hero/hero.js',
     array(),
-    boilerplate_get_asset_version('components/layout/hero-block/hero-block.js'),
+    boilerplate_get_asset_version('components/layout/hero/hero.js'),
     true
 );
 
@@ -22,22 +22,22 @@ $text_color = trim((string)($args['text_color'] ?? '#172033'));
 $accent_color = trim((string)($args['accent_color'] ?? '#2563eb'));
 ?>
 
-<section class="hero-block" style="background-color: <?php echo esc_attr($background_color); ?>; color: <?php echo esc_attr($text_color); ?>;">
-    <div class="hero-block__inner">
+<section class="hero" style="background-color: <?php echo esc_attr($background_color); ?>; color: <?php echo esc_attr($text_color); ?>;">
+    <div class="hero__inner">
         <?php if ($eyebrow !== '') : ?>
-            <p class="hero-block__eyebrow" style="color: <?php echo esc_attr($accent_color); ?>;">
+            <p class="hero__eyebrow" style="color: <?php echo esc_attr($accent_color); ?>;">
                 <?php echo esc_html($eyebrow); ?>
             </p>
         <?php endif; ?>
 
         <?php if ($title !== '') : ?>
-            <h1 class="hero-block__title">
+            <h1 class="hero__title">
                 <?php echo esc_html($title); ?>
             </h1>
         <?php endif; ?>
 
         <?php if ($excerpt !== '') : ?>
-            <div class="hero-block__excerpt">
+            <div class="hero__excerpt">
                 <?php echo wp_kses_post($excerpt); ?>
             </div>
         <?php endif; ?>
