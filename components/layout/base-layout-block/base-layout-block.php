@@ -22,6 +22,7 @@ $items = is_array($args['items'] ?? null) ? array_values($args['items']) : [];
 $links = is_array($args['links'] ?? null) ? array_values($args['links']) : [];
 $media_image = trim((string)($args['media_image'] ?? ''));
 $media_alt = trim((string)($args['media_alt'] ?? $title));
+$heading_level = in_array((string)($args['heading_level'] ?? '2'), ['1', '2'], true) ? (string)$args['heading_level'] : '2';
 ?>
 
 <section class="base-layout-block base-layout-block--<?php echo esc_attr($variant); ?>">
@@ -32,7 +33,11 @@ $media_alt = trim((string)($args['media_alt'] ?? $title));
             <?php endif; ?>
 
             <?php if ($title !== '') : ?>
-                <h2 class="base-layout-block__title"><?php echo esc_html($title); ?></h2>
+                <?php if ($heading_level === '1') : ?>
+                    <h1 class="base-layout-block__title"><?php echo esc_html($title); ?></h1>
+                <?php else : ?>
+                    <h2 class="base-layout-block__title"><?php echo esc_html($title); ?></h2>
+                <?php endif; ?>
             <?php endif; ?>
 
             <?php if ($body !== '') : ?>

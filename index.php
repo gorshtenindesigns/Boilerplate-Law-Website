@@ -8,6 +8,7 @@ get_header();
         'variant' => 'index',
         'eyebrow' => boilerplate_get_default_copy('content_eyebrow'),
         'title' => boilerplate_get_default_copy('archive_title'),
+        'heading_level' => '1',
         'body' => wpautop(boilerplate_get_default_copy('page_summary')),
     ]);
     ?>

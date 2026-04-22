@@ -24,6 +24,7 @@ $contact_details = is_array($header_data['contact_details'] ?? null) ? $header_d
 $nav_aria_label = $brand_label !== '' ? $brand_label . ' navigation' : 'Primary navigation';
 $header_cta_label = function_exists('boilerplate_get_default_copy') ? boilerplate_get_default_copy('nav_cta', 'Contact') : 'Contact';
 $header_cta_url = trim((string)($header_data['contact_url'] ?? home_url('/')));
+$social_links = function_exists('boilerplate_get_site_social_links') ? boilerplate_get_site_social_links() : [];
 $drawer_id = 'site-header-drawer';
 ?>
 <!DOCTYPE html>
@@ -37,6 +38,35 @@ $drawer_id = 'site-header-drawer';
 <?php wp_body_open(); ?>
 <div class="site-shell">
     <header class="site-header">
+        <div class="site-header__topbar">
+            <div class="site-header__topbar-inner">
+                <div class="site-header__topbar-contact">
+                    <?php if (!empty($contact_details['phone']) && !empty($contact_details['phone_href'])) : ?>
+                        <a href="<?php echo esc_url($contact_details['phone_href']); ?>">Call <?php echo esc_html($contact_details['phone']); ?></a>
+                    <?php endif; ?>
+                    <?php if (!empty($contact_details['email']) && !empty($contact_details['email_href'])) : ?>
+                        <a href="<?php echo esc_url($contact_details['email_href']); ?>"><?php echo esc_html($contact_details['email']); ?></a>
+                    <?php endif; ?>
+                </div>
+
+                <div class="site-header__topbar-actions">
+                    <?php if (!empty($social_links)) : ?>
+                        <div class="site-header__socials">
+                            <?php foreach ($social_links as $social) : ?>
+                                <a class="site-header__social" href="<?php echo esc_url($social['url'] ?? home_url('/')); ?>" aria-label="<?php echo esc_attr($social['label'] ?? 'Social profile'); ?>">
+                                    <?php echo wp_kses($social['icon'] ?? '', ['svg' => ['viewBox' => true, 'fill' => true], 'path' => ['d' => true, 'fill' => true, 'stroke' => true, 'stroke-width' => true, 'stroke-linecap' => true, 'stroke-linejoin' => true], 'rect' => ['x' => true, 'y' => true, 'width' => true, 'height' => true, 'rx' => true, 'stroke' => true, 'stroke-width' => true], 'circle' => ['cx' => true, 'cy' => true, 'r' => true, 'fill' => true, 'stroke' => true, 'stroke-width' => true]]); ?>
+                                </a>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (!empty($contact_details['phone']) && !empty($contact_details['phone_href'])) : ?>
+                        <a class="site-header__call-now" href="<?php echo esc_url($contact_details['phone_href']); ?>">Call Now</a>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+
         <div class="site-header__bar">
             <a class="site-header__brand" href="<?php echo esc_url(home_url('/')); ?>" aria-label="<?php echo esc_attr($brand_label . ' home'); ?>">
                 <span class="site-header__brand-mark" aria-hidden="true"><?php echo esc_html(substr($brand_label, 0, 1)); ?></span>

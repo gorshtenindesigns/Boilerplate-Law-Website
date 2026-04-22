@@ -122,9 +122,12 @@
 .base-layout-block--parent,
 .base-layout-block--child,
 .base-layout-block--archive,
-.base-layout-block--search {
+.base-layout-block--search,
+.base-layout-block--index,
+.base-layout-block--single {
   margin-top: 0;
-  padding: clamp(4rem, 8vw, 7rem) 0;
+  padding: clamp(11rem, 16vw, 14rem) 0 clamp(4rem, 8vw, 7rem);
+  min-height: 100svh;
   background: linear-gradient(135deg, #06243a 0%, #0f3b5a 100%);
   color: #ffffff;
 }
@@ -133,7 +136,9 @@
 .base-layout-block--parent .base-layout-block__inner,
 .base-layout-block--child .base-layout-block__inner,
 .base-layout-block--archive .base-layout-block__inner,
-.base-layout-block--search .base-layout-block__inner {
+.base-layout-block--search .base-layout-block__inner,
+.base-layout-block--index .base-layout-block__inner,
+.base-layout-block--single .base-layout-block__inner {
   align-items: center;
 }
 
@@ -141,7 +146,9 @@
 .base-layout-block--parent .base-layout-block__eyebrow,
 .base-layout-block--child .base-layout-block__eyebrow,
 .base-layout-block--archive .base-layout-block__eyebrow,
-.base-layout-block--search .base-layout-block__eyebrow {
+.base-layout-block--search .base-layout-block__eyebrow,
+.base-layout-block--index .base-layout-block__eyebrow,
+.base-layout-block--single .base-layout-block__eyebrow {
   color: #36d08b;
 }
 
@@ -149,7 +156,9 @@
 .base-layout-block--parent .base-layout-block__title,
 .base-layout-block--child .base-layout-block__title,
 .base-layout-block--archive .base-layout-block__title,
-.base-layout-block--search .base-layout-block__title {
+.base-layout-block--search .base-layout-block__title,
+.base-layout-block--index .base-layout-block__title,
+.base-layout-block--single .base-layout-block__title {
   color: #ffffff;
   font-size: clamp(2.5rem, 6vw, 5.25rem);
 }
@@ -158,7 +167,9 @@
 .base-layout-block--parent .base-layout-block__body,
 .base-layout-block--child .base-layout-block__body,
 .base-layout-block--archive .base-layout-block__body,
-.base-layout-block--search .base-layout-block__body {
+.base-layout-block--search .base-layout-block__body,
+.base-layout-block--index .base-layout-block__body,
+.base-layout-block--single .base-layout-block__body {
   color: rgba(255, 255, 255, 0.78);
 }
 
@@ -166,7 +177,9 @@
 .base-layout-block--parent .base-layout-block__media img,
 .base-layout-block--child .base-layout-block__media img,
 .base-layout-block--archive .base-layout-block__media img,
-.base-layout-block--search .base-layout-block__media img {
+.base-layout-block--search .base-layout-block__media img,
+.base-layout-block--index .base-layout-block__media img,
+.base-layout-block--single .base-layout-block__media img {
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.18);
 }
 

@@ -3,8 +3,8 @@
 .law-hero {
     position: relative;
     width: 100%;
-    padding: clamp(4rem, 8vw, 7rem) var(--boilerplate-page-gutter);
-    min-height: 28rem;
+    padding: clamp(11rem, 16vw, 14rem) var(--boilerplate-page-gutter) clamp(4rem, 8vw, 7rem);
+    min-height: 100svh;
     background-color: #34485f;
     background-size: cover;
     background-position: center;
@@ -45,7 +45,7 @@
     }
 
     .law-hero {
-        min-height: 32rem;
+        min-height: 100svh;
     }
 }
 

@@ -10,6 +10,7 @@ while (have_posts()) :
             'variant' => 'single',
             'eyebrow' => boilerplate_get_default_copy('content_eyebrow'),
             'title' => get_the_title() ?: boilerplate_get_default_copy('single_title'),
+            'heading_level' => '1',
             'body' => get_the_excerpt() !== '' ? get_the_excerpt() : wpautop(boilerplate_get_default_copy('page_summary')),
         ]);
         ?>

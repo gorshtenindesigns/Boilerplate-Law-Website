@@ -9,6 +9,7 @@ $media_defaults = function_exists('boilerplate_get_theme_media_defaults') ? boil
         'variant' => 'archive',
         'eyebrow' => boilerplate_get_default_copy('content_eyebrow'),
         'title' => get_the_archive_title() ?: boilerplate_get_default_copy('archive_title'),
+        'heading_level' => '1',
         'body' => get_the_archive_description() !== '' ? get_the_archive_description() : wpautop(boilerplate_get_default_copy('page_summary')),
         'media_image' => $media_defaults['wide_secondary'] ?? '',
         'media_alt' => get_the_archive_title() ?: boilerplate_get_default_copy('archive_title'),
