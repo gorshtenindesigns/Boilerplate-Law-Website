@@ -48,7 +48,9 @@ add_action('wp_enqueue_scripts', function () {
     foreach ([
         'base-ui-component' => 'components/ui/base-ui-component/base-ui-component',
         'law-hero' => 'components/layout/law-hero/law-hero',
+        'award-badge-strip' => 'components/layout/award-badge-strip/award-badge-strip',
         'practice-area-grid' => 'components/layout/practice-area-grid/practice-area-grid',
+        'home-content-overview' => 'components/layout/home-content-overview/home-content-overview',
         'base-layout-block' => 'components/layout/base-layout-block/base-layout-block',
         'base-content-block' => 'components/content-blocks/base-content-block/base-content-block',
     ] as $handle => $asset_base) {

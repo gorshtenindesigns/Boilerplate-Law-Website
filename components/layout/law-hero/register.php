@@ -55,7 +55,7 @@ function law_hero_build_args($post_id = 0, $context = [], $block = [])
     return [
         'eyebrow' => get_post_meta($post_id, 'law_hero_eyebrow', true) ?: boilerplate_get_default_copy('home_eyebrow', 'Client-Centered Legal Practice'),
         'title' => $hero_data['h1'] ?? boilerplate_get_default_copy('home_title', get_the_title($post_id)),
-        'excerpt' => $hero_data['excerpt'] ?? boilerplate_get_default_copy('home_body', get_the_excerpt($post_id)),
+        'excerpt' => !empty($hero_data['excerpt']) ? $hero_data['excerpt'] : wpautop(boilerplate_get_default_copy('home_body', get_the_excerpt($post_id))),
         'primary_cta_label' => get_post_meta($post_id, 'law_hero_cta_label', true) ?: boilerplate_get_default_copy('nav_cta', 'Schedule a Consultation'),
         'primary_cta_url' => get_post_meta($post_id, 'law_hero_cta_url', true) ?: $contact_url,
         'secondary_cta_label' => get_post_meta($post_id, 'law_hero_secondary_cta_label', true) ?: 'View Practice Areas',
