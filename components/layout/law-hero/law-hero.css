@@ -1,0 +1,241 @@
+/* Law Hero Block Styles */
+
+.law-hero {
+    position: relative;
+    width: 100%;
+    padding: var(--boilerplate-section-space) var(--boilerplate-page-gutter);
+    min-height: 28rem;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+.law-hero__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(26, 58, 92, 0.85) 0%,
+        rgba(26, 58, 92, 0.75) 50%,
+        rgba(23, 32, 51, 0.9) 100%
+    );
+    z-index: 1;
+}
+
+.law-hero__inner {
+    position: relative;
+    z-index: 2;
+    max-width: var(--boilerplate-page-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+}
+
+@media (min-width: 1024px) {
+    .law-hero__inner {
+        grid-template-columns: 1.2fr 1fr;
+    }
+
+    .law-hero {
+        min-height: 32rem;
+    }
+}
+
+.law-hero__content {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1rem, 3vw, 2rem);
+    animation: lawHeroFadeUp 0.6s ease-out 0s both;
+}
+
+.law-hero__eyebrow {
+    font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--boilerplate-color-accent-soft);
+    margin: 0;
+    animation: lawHeroFadeUp 0.6s ease-out 0.1s both;
+}
+
+.law-hero__title {
+    font-size: clamp(2.2rem, 5vw, 3.75rem);
+    line-height: 1.06;
+    font-weight: 700;
+    color: var(--boilerplate-color-surface);
+    margin: 0;
+    text-wrap: balance;
+    animation: lawHeroFadeUp 0.6s ease-out 0.2s both;
+}
+
+.law-hero__excerpt {
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    line-height: 1.6;
+    max-width: 58ch;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+    animation: lawHeroFadeUp 0.6s ease-out 0.3s both;
+}
+
+.law-hero__excerpt > * + * {
+    margin-top: 0.875rem;
+}
+
+.law-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(0.75rem, 2vw, 1rem);
+    margin-top: clamp(1rem, 3vw, 1.75rem);
+    animation: lawHeroFadeUp 0.6s ease-out 0.4s both;
+}
+
+.law-hero__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.875rem;
+    padding: 0 clamp(1.25rem, 3vw, 1.75rem);
+    border-radius: 999px;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+}
+
+.law-hero__cta--primary {
+    background: var(--boilerplate-color-accent);
+    color: var(--boilerplate-color-surface);
+}
+
+.law-hero__cta--primary:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
+
+.law-hero__cta--secondary {
+    background: transparent;
+    color: var(--boilerplate-color-surface);
+    border-color: var(--boilerplate-color-surface);
+}
+
+.law-hero__cta--secondary:hover {
+    background: var(--boilerplate-color-accent-soft);
+    color: var(--boilerplate-color-text);
+    border-color: var(--boilerplate-color-accent-soft);
+}
+
+.law-hero__stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(1rem, 2vw, 1.5rem);
+    animation: lawHeroFadeUp 0.6s ease-out 0.5s both;
+}
+
+@media (min-width: 768px) {
+    .law-hero__stats {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.law-hero__stat-item {
+    padding: clamp(1rem, 2vw, 1.5rem);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: calc(var(--boilerplate-radius) * 0.6);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.law-hero__stat-value {
+    display: block;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--boilerplate-color-accent-soft);
+}
+
+.law-hero__stat-label {
+    display: block;
+    font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    line-height: 1.3;
+}
+
+.law-hero__image {
+    display: none;
+    position: relative;
+    border-radius: calc(var(--boilerplate-radius) * 0.8);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 1024px) {
+    .law-hero__image {
+        display: block;
+    }
+}
+
+.law-hero__image-tag {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Animation */
+@keyframes lawHeroFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(1.5rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .law-hero__content,
+    .law-hero__eyebrow,
+    .law-hero__title,
+    .law-hero__excerpt,
+    .law-hero__actions,
+    .law-hero__stats {
+        animation: none;
+    }
+
+    .law-hero {
+        background-attachment: scroll;
+    }
+}
+
+/* Mobile optimization */
+@media (max-width: 640px) {
+    .law-hero {
+        min-height: 24rem;
+    }
+
+    .law-hero__inner {
+        gap: clamp(1.5rem, 4vw, 2rem);
+    }
+
+    .law-hero__stats {
+        gap: 0.75rem;
+    }
+
+    .law-hero__stat-item {
+        padding: clamp(0.875rem, 1.5vw, 1.25rem);
+    }
+}
