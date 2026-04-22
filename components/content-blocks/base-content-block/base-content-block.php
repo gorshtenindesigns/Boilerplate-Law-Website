@@ -68,7 +68,7 @@ function boilerplate_render_base_content_block($section, $index = 0, $is_last = 
         $auto_media = array_values(array_filter([
             $media_defaults['wide_secondary'] ?? '',
             $media_defaults['wide_primary'] ?? '',
-            $media_defaults['square'] ?? '',
+            $media_defaults['hero'] ?? '',
         ]));
 
         if (!empty($auto_media) && $section_title !== '') {

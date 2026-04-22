@@ -33,6 +33,21 @@ $service_areas = [
     'Glendale',
     'Burbank',
     'Long Beach',
+    'West Hollywood',
+    'Hollywood',
+    'Downtown LA',
+    'Westwood',
+    'Brentwood',
+    'Century City',
+    'Encino',
+    'Sherman Oaks',
+    'Studio City',
+    'North Hollywood',
+    'Torrance',
+    'Inglewood',
+    'Manhattan Beach',
+    'Redondo Beach',
+    'Marina del Rey',
 ];
 ?>
     <section class="site-service-map" aria-labelledby="site-service-map-title">

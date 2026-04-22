@@ -23,7 +23,7 @@ $media_defaults = function_exists('boilerplate_get_theme_media_defaults') ? boil
         'eyebrow' => boilerplate_get_default_copy('content_eyebrow'),
         'title' => $hero_data['h1'] ?? get_the_title(),
         'body' => $hero_data['excerpt'] !== '' ? $hero_data['excerpt'] : wpautop(boilerplate_get_default_copy('page_summary')),
-        'media_image' => has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : ($media_defaults['square'] ?? ''),
+        'media_image' => has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : ($media_defaults['wide_primary'] ?? ''),
         'media_alt' => $hero_data['h1'] ?? get_the_title(),
     ]);
     ?>
