@@ -538,18 +538,23 @@ function boilerplate_get_primary_navigation_items()
     $items = [];
     $front_page_id = (int)get_option('page_on_front');
     $front_summary = '';
+    $home_label = 'Home';
 
     if ($front_page_id > 0) {
         $front_page = get_post($front_page_id);
         if ($front_page instanceof WP_Post && $front_page->post_status === 'publish') {
             $front_summary = boilerplate_get_page_summary($front_page);
+            $front_title = trim((string)get_the_title($front_page));
+            if ($front_title !== '') {
+                $home_label = $front_title;
+            }
         }
     }
 
     $items[] = [
-        'label' => 'Lorem',
+        'label' => $home_label,
         'url' => home_url('/'),
-        'kicker' => 'Lorem',
+        'kicker' => $home_label,
         'description' => $front_summary,
     ];
 

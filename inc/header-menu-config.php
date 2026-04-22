@@ -1,40 +1,13 @@
 <?php
 /**
- * Manual neutral navigation defaults.
+ * Header menu configuration.
+ *
+ * Return an empty array by default so the theme falls back to
+ * boilerplate_get_primary_navigation_items(), which auto-builds
+ * navigation from published pages.
  */
 
 function boilerplate_get_header_menu_config()
 {
-    return [
-        [
-            'label' => 'Lorem',
-            'url' => '/',
-            'kicker' => 'Lorem',
-            'description' => 'Lorem ipsum dolor sit amet.',
-        ],
-        [
-            'label' => 'Ipsum',
-            'url' => '/#ipsum',
-            'kicker' => 'Ipsum',
-            'description' => 'Consectetur adipiscing elit.',
-        ],
-        [
-            'label' => 'Dolor',
-            'url' => '/#dolor',
-            'kicker' => 'Dolor',
-            'description' => 'Sed do eiusmod tempor.',
-            'children' => [
-                [
-                    'label' => 'Sit',
-                    'url' => '/#sit',
-                    'description' => 'Ut labore et dolore.',
-                ],
-                [
-                    'label' => 'Amet',
-                    'url' => '/#amet',
-                    'description' => 'Magna aliqua.',
-                ],
-            ],
-        ],
-    ];
+    return apply_filters('boilerplate_header_menu_config', []);
 }

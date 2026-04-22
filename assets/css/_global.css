@@ -2,6 +2,10 @@
   color-scheme: light;
 }
 
+body.admin-bar .site-header {
+  top: 2.75rem;
+}
+
 body {
   line-height: 1.6;
   overflow-x: clip;
@@ -9,6 +13,8 @@ body {
 
 .site-shell {
   min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 .site-header,
@@ -27,18 +33,43 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.25rem 0;
+  margin-top: 0.75rem;
+  padding: 0.75rem clamp(0.875rem, 2vw, 1.25rem);
+  border: 1px solid var(--boilerplate-color-border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0.75rem;
+  z-index: 20;
 }
 
 .site-header__brand {
   font-weight: 700;
   letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 
 .site-header__nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.site-header__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.1rem;
+  padding: 0 0.7rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .site-header__link,
@@ -54,6 +85,8 @@ body {
 .content-page-layout__toc-link:hover,
 .content-page-layout__toc-link:focus-visible {
   color: var(--boilerplate-color-accent);
+  border-color: var(--boilerplate-color-accent-soft);
+  background: var(--boilerplate-color-accent-soft);
 }
 
 .site-main,
@@ -61,6 +94,7 @@ body {
 .archive-shell,
 .search-shell,
 .single-shell {
+  padding-top: clamp(1.25rem, 2vw, 2rem);
   padding-bottom: var(--boilerplate-section-space);
 }
 
@@ -144,7 +178,8 @@ body {
 .site-footer {
   display: grid;
   gap: 0.75rem;
-  padding: 0 0 2rem;
+  padding: 2rem 0;
+  border-top: 1px solid var(--boilerplate-color-border);
   color: var(--boilerplate-color-text-muted);
 }
 
@@ -158,5 +193,15 @@ body {
   .site-header {
     flex-direction: column;
     align-items: flex-start;
+    border-radius: calc(var(--boilerplate-radius) * 0.8);
+    top: 0.5rem;
+  }
+
+  body.admin-bar .site-header {
+    top: 3.2rem;
+  }
+
+  .site-header__nav {
+    justify-content: flex-start;
   }
 }

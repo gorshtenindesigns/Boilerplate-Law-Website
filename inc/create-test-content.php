@@ -379,10 +379,13 @@ Tell us about your project, ask questions, or request more information. We typic
         ],
     ];
 
+    $page_ids_by_slug = [];
+
     foreach ($pages as $page_data) {
         // Check if page already exists
         $existing = get_page_by_path($page_data['post_name']);
         if ($existing) {
+            $page_ids_by_slug[$page_data['post_name']] = (int) $existing->ID;
             continue;
         }
 
@@ -396,6 +399,7 @@ Tell us about your project, ask questions, or request more information. We typic
         ]);
 
         if (!is_wp_error($post_id)) {
+            $page_ids_by_slug[$page_data['post_name']] = (int) $post_id;
             error_log("Created page: {$page_data['post_title']} (ID: $post_id)");
         }
     }
@@ -429,6 +433,19 @@ Tell us about your project, ask questions, or request more information. We typic
         }
 
         wp_insert_post($post_data);
+    }
+
+    $home_page_id = (int) ($page_ids_by_slug['home'] ?? 0);
+    $blog_page_id = (int) ($page_ids_by_slug['blog'] ?? 0);
+
+    if ($home_page_id > 0) {
+        update_option('show_on_front', 'page');
+        update_option('page_on_front', $home_page_id);
+        update_post_meta($home_page_id, '_wp_page_template', 'home.php');
+    }
+
+    if ($blog_page_id > 0) {
+        update_option('page_for_posts', $blog_page_id);
     }
 
     // Mark that we've created content
